@@ -2,6 +2,8 @@
 #include <string>
 
 
+
+
 bool is_div_by_3(int n) 
 { 
     if (n == 0 || n == 3) 
