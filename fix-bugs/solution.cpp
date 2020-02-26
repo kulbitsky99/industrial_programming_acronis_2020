@@ -7,8 +7,13 @@
 *		AnnaM
 */
 
+//Bug 1 - bad codestyle in a whole: 	strange comments like in 20-22 strings and
+//										non-proportional offsets like in 40 string(and so on)
+
 #include <Windows.h>
 #include <stdio.h>
+
+//Bug 2 - some names in enum PAGE_COLOR are marked with number, some of them no
 
 enum PAGE_COLOR
 {
@@ -21,8 +26,11 @@ enum PAGE_COLOR
 /**
  * UINT Key of a page in hash-table (prepared from color and address)
  */
+
+//Bug 3 - CHAR and UINT should be written in lower case
+//Bug 4 - bag initialization of cColor and cAddr(at least cColor = '8' and cAddr = 24)
 union PageKey
-{
+{ 
 	struct
 	{
         CHAR	cColor: 8;
@@ -48,6 +56,9 @@ struct PageDesc
 	PageDesc		*next, *prev;
 };
 
+//Bug 5 - define, incapsulated in define, is like music playing in Hell
+//Bug 6 - 	(Desk).uKey is strange thing: at least Desk -> uKey or *(Desk).uKey
+//			depending on context 
 #define PAGE_INIT( Desc, Addr, Color )              \
     {                                               \
         (Desc).uKey = CALC_PAGE_KEY( Addr, Color ); \
@@ -56,13 +67,15 @@ struct PageDesc
         
 
 /* storage for pages of all colors */
+//Bug 7 - no spaces in PageStrg[ 3 ] needed and probably PageDesc array without *
 static PageDesc* PageStrg[ 3 ];
 
+//Bug 8 - bad memset usage: in this syntaxis it is better to use (3 * sizeof(PageDesc*))
 void PageStrgInit()
 {
 	memset( PageStrg, 0, sizeof(&PageStrg) );
 }
-
+//Bug 9 - uncontrolled cycle can go beyond memory
 PageDesc* PageFind( void* ptr, char color )
 {
 	for( PageDesc* Pg = PageStrg[color]; Pg; Pg = Pg->next );
@@ -101,6 +114,7 @@ PageDesc* PageInit( void* ptr, UINT color )
 /**
  * Print all mapped pages
  */
+//Bug 10 - UINT and invalid usage of define (#clr)
 void PageDump()
 {
 	UINT color = 0;
@@ -111,7 +125,6 @@ void PageDump()
 		PG_COLOR_NAME(PG_COLOR_YELLOW),
 		PG_COLOR_NAME(PG_COLOR_GREEN)
 	};
-
 	while( color <= PG_COLOR_RED )
 	{
 		printf("PgStrg[(%s) %u] ********** \n", color, PgColorName[color] );
