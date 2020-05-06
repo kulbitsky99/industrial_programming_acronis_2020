@@ -1,6 +1,6 @@
 ## Laboratory work XIII
 
-<a href="https://github.com/kulbitsky99/industrial_programming_acronis_2020/screencast/tmux.mkv"><img src="https://github.com/kulbitsky99/industrial_programming_acronis_2020/screencast/vivid.jpg" width="640"/></a>
+<a href="https://raw.githubusercontent.com/kulbitsky99/industrial_programming_acronis_2020/screencast/tmux.mkv"><img src="https://raw.githubusercontent.com/kulbitsky99/industrial_programming_acronis_2020/screencast/vivid.jpg" width="640"/></a>
 
 Данная лабораторная работа посвещена изучению терминального мультиплексора tmux.
 
